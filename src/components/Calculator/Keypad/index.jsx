@@ -1,95 +1,51 @@
 import { digits, otherSymbols, symbols } from '@/constants/keys'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { KeysLi, KeysUl, KeysWrapper } from './styles'
-
-const Keypad = ({ history, setHistory, number, setNumber, result, setResult }) => {
-    // const dispatch = useDispatch()
-    // const number = useSelector(state => state.number)
-    // const result = useSelector(state => state.result)
-    // const operator = useSelector(state => state.operator)
+import { result } from '@/helpers'
+import { changeHistory, addSymbol, setResult } from '@/actions'
 
 
+const Keypad = () => {
+    const dispatch = useDispatch()
+    const number = useSelector(state => state.number.number)
+    const history = useSelector(state => state.history.history)
 
-
-    const [operator, setOperator] = useState('')
-
-    const getNumber = value => {
-        switch (operator) {
-            case '+':
-                setResult(result => result + Number(value))
-                setNumber(value)
-                setHistory(history.concat(`${result} ${operator} ${value} = ${Number(result) + Number(value)}`))
-                break
-            case '-':
-                setResult(result - Number(value))
-                setNumber(value)
-                setHistory(history.concat(`${result} ${operator} ${value} = ${Number(result) - Number(value)}`))
-                break
-            case '/':
-                setResult(result / Number(value))
-                setNumber(value)
-                setHistory(history.concat(`${result} ${operator} ${value} = ${Number(result) / Number(value)}`))
-                break
-            case '*':
-                setResult(result * Number(value))
-                setNumber(value)
-                setHistory(history.concat(`${result} ${operator} ${value} = ${Number(result) * Number(value)}`))
-                break
-            case '%':
-                setResult(result % Number(value))
-                setNumber(value)
-                setHistory(history.concat(`${result} ${operator} ${value} = ${Number(result) % Number(value)}`))
-                break
-            default:
-                setNumber(number + value)
-        }
-    }
-
-    const calculate = value => {
-        if (!operator) setResult(Number(number))
-        setOperator(value)
-        console.log(history)
-    }
+    const getNumber = value => dispatch(addSymbol(value))
 
     const correctNumbers = value => {
         switch (value) {
             case 'CE':
-                setNumber(number.slice(0, -1))
+                dispatch(setResult(String(number).slice(0, -1)))
                 break
             case 'C':
-                setResult('')
-                setNumber('')
-                setOperator('')
-                setHistory([])
+                dispatch(setResult(''))
+                // dispatch(changeHistory([]))
                 break
             case '=': {
-                const index = String(result).indexOf('.')
-                index > 0 ? setNumber(String(result).slice(0, index + 4)) : setNumber(result)
+                const final = result(number)
+                const index = String(final).indexOf('.')
+                const rounded = index > 0 ? String(final).slice(0, index + 4) : final
+                dispatch(changeHistory(history.concat(`${number} = ${rounded}`)))
+                dispatch(setResult(rounded))
                 break
             }
             case '.':
-                setNumber(number + '.')
-                /* та же проблема со вторым символом 222 */
+                dispatch(addSymbol('.'))
                 break
             case '(':
-                setNumber('(' + number)
+                dispatch(addSymbol('('))
                 break
             case ')':
-                setNumber(number + ')')
+                dispatch(addSymbol(')'))
                 break
             case '+/-':
-                Number(number) >= 0 ? setNumber('-' + number) : setNumber('+' + number)
-                /* если разберусь с выражением, тут тоже можно подшаманить */
-
+                Number(number) >= 0 ? dispatch(addSymbol('-')) : dispatch(addSymbol('+'))
                 break
-
-
             default:
                 console.log('wrong button')
         }
     }
-
 
 
     return (
@@ -99,13 +55,12 @@ const Keypad = ({ history, setHistory, number, setNumber, result, setResult }) =
                     return <KeysLi key={index} onClick={() => getNumber(digit)}>{digit}</KeysLi>
                 })}
                 {symbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => calculate(symbol)}>{symbol}</KeysLi>
+                    return <KeysLi key={index} onClick={() => getNumber(symbol)}>{symbol}</KeysLi>
                 })}
                 {otherSymbols.map((symbol, index) => {
                     return <KeysLi key={index} onClick={() => correctNumbers(symbol)}>{symbol}</KeysLi>
                 })}
             </KeysUl>
-            {/* number={number || 0} operator={operator} result={result || 0} */}
         </KeysWrapper>
     )
 }

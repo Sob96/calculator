@@ -1,11 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { DisplayWrapper } from './styles'
 
 
-const Display = ({ number, result }) => {
+const Display = () => {
+    const number = useSelector(state => state.number.number)
     return (
         <DisplayWrapper>
-            <p>({result || 0})</p>
             <div>{number || 0}</div>
 
         </DisplayWrapper>

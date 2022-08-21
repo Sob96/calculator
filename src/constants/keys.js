@@ -1,5 +1,5 @@
 export const digits = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0']
 
-export const symbols = ['+', '-', '*', '/', '%']
+export const symbols = ['+', '-', '*', '/', '%', '(', ')']
 
-export const otherSymbols = ['C', 'CE', '.', '(', ')', '=', '+/-']
+export const otherSymbols = ['C', 'CE', '.', '=', '+/-']
