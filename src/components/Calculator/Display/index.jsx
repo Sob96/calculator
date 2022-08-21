@@ -1,12 +1,14 @@
 import React from 'react'
+import { DisplayWrapper } from './styles'
 
 
-const Display = () => {
+const Display = ({ number, result }) => {
     return (
-        <section>
-            <h3>Display</h3>
+        <DisplayWrapper>
+            <p>({result || 0})</p>
+            <div>{number || 0}</div>
 
-        </section>
+        </DisplayWrapper>
     )
 }
 

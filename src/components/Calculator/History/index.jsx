@@ -1,12 +1,18 @@
 import React from 'react'
+import { HistoryLi, HistoryUl, HistoryWrapper } from './styles'
 
 
-const History = () => {
+const History = ({ history }) => {
     return (
-        <section>
-            <h3>History</h3>
+        <HistoryWrapper>
+            <HistoryUl>
+                {history.map((data, index) => {
+                    return <HistoryLi key={index}>{data}</HistoryLi>
+                })}
 
-        </section>
+            </HistoryUl>
+
+        </HistoryWrapper>
     )
 }
 

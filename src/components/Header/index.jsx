@@ -1,14 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, useLocation } from 'react-router-dom'
+import { HeaderContainer, HeaderWrapper } from './styles'
 
 const Header = () => {
+    const location = useLocation()
     return (
-        <section>
-            <h3>Calculator App</h3>
-            <Link to="/">Main</Link>
-            <Link to="/settings">Settings</Link>
-        </section>
+        <HeaderWrapper>
+            <HeaderContainer>
+                <h3>Calculator App</h3>
+                <div>
+                    <Link className={location.pathname === '/' ? "headerLinks" : "headerLinks inactive"} to="/">Main</Link>
+                    <Link className={location.pathname === '/settings' ? "headerLinks" : "headerLinks inactive"} to="/settings">Settings</Link>
+                </div>
+            </HeaderContainer>
+        </HeaderWrapper>
     )
 }
 

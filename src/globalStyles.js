@@ -1,14 +1,14 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-import theme from './theme'
+// import theme from './theme'
 
 export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family: ${theme.font};
+    font-family: Helvetica;
+    font-size: 30px;
   }
 
   html, body {
@@ -30,7 +30,13 @@ export default createGlobalStyle`
   }
 
   #root {
-    display: flex;
-    background: linear-gradient(to bottom, #c06c84da, #6c5b7bda);
+    /* display: flex; */
+    /* background: linear-gradient(to bottom, #c06c84da, #6c5b7bda); */
   }
+`
+
+export const Container = styled.div`
+  width: 98%;
+  max-width: 1440px;
+  margin: 0 auto;
 `
