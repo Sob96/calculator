@@ -1,4 +1,4 @@
-import { digits, otherSymbols, symbols } from '@/constants/keys'
+import symbols from '@/constants/symbols'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { KeysLi, KeysUl, KeysWrapper } from './styles'
@@ -11,16 +11,13 @@ const Keypad = () => {
     const number = useSelector(state => state.number.number)
     const history = useSelector(state => state.history.history)
 
-    const getNumber = value => dispatch(addSymbol(value))
-
-    const correctNumbers = value => {
+    const startCalculation = value => {
         switch (value) {
             case 'CE':
                 dispatch(setResult(String(number).slice(0, -1)))
                 break
             case 'C':
                 dispatch(setResult(''))
-                // dispatch(changeHistory([]))
                 break
             case '=': {
                 const final = result(number)
@@ -43,7 +40,7 @@ const Keypad = () => {
                 Number(number) >= 0 ? dispatch(addSymbol('-')) : dispatch(addSymbol('+'))
                 break
             default:
-                console.log('wrong button')
+                dispatch(addSymbol(value))
         }
     }
 
@@ -51,14 +48,8 @@ const Keypad = () => {
     return (
         <KeysWrapper>
             <KeysUl>
-                {digits.map((digit, index) => {
-                    return <KeysLi key={index} onClick={() => getNumber(digit)}>{digit}</KeysLi>
-                })}
                 {symbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => getNumber(symbol)}>{symbol}</KeysLi>
-                })}
-                {otherSymbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => correctNumbers(symbol)}>{symbol}</KeysLi>
+                    return <KeysLi key={index} onClick={() => startCalculation(symbol)}>{symbol}</KeysLi>
                 })}
             </KeysUl>
         </KeysWrapper>

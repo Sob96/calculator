@@ -2,15 +2,16 @@ import { Container } from '@/globalStyles'
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.header`
-    font-size: 18px;
     font-weight: 100;
     background-color: #434343;
     padding: 1.5% 0;
     color: #FFFFFF;
+    margin-bottom: 10px;
 
-    h3 {
+    h1 {
         font-weight: 100;
         font-size: 20px;
+        opacity: 0.6;
     }
 
     .headerLinks {
@@ -20,6 +21,7 @@ export const HeaderWrapper = styled.header`
     }
     .inactive {
             text-decoration: none;
+            opacity: 0.6;
         }
 `
 

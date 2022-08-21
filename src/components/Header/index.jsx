@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <HeaderWrapper>
             <HeaderContainer>
-                <h3>Calculator App</h3>
+                <h1>Calculator App</h1>
                 <div>
                     <Link className={location.pathname === '/' ? "headerLinks" : "headerLinks inactive"} to="/">Main</Link>
                     <Link className={location.pathname === '/settings' ? "headerLinks" : "headerLinks inactive"} to="/settings">Settings</Link>

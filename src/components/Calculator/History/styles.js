@@ -1,8 +1,18 @@
 import styled from 'styled-components'
 
 export const HistoryWrapper = styled.aside`
-   display: inline-block;
-   width: 30%;
+    text-align: center;
+    width: 20%;
+    border-left: 1.5px solid #707070;
+    margin-bottom: 1px;
+
+    h5 {
+        padding-top: 10px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 10px;
+   }
+
 `
 
 export const HistoryUl = styled.ul`

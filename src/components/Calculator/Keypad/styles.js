@@ -6,27 +6,24 @@ export const KeysWrapper = styled.section`
 `
 
 export const KeysUl = styled.ul`
-display: grid;
-grid-template-columns: repeat(5, 100px);
-grid-template-rows: repeat(4, 100px);
-align-items: center;
-justify-content: center;
-    /* display: flex;
-    flex-flow: row wrap;
-    justify-content: center; */
-
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 4% 8%;
+    justify-content: center;
 `
 
 export const KeysLi = styled.li`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
-    display: inline-block;
-    padding: 6px;
-    margin: 0 15px 15px 0;
-    font-size: 30px;
-    text-align: center;
+    width: 90%;
+    padding: 25px 0px;
+    font-size: 40px;
     border: 1px solid #707070;
     cursor: pointer;
     background-color: #F2F2F2;
-    border-radius: 30%;
+    border-radius: 20%;
 
 `

@@ -7,6 +7,7 @@ const History = () => {
     const history = useSelector(state => state.history.history)
     return (
         <HistoryWrapper>
+            <h5>History</h5>
             <HistoryUl>
                 {history.map((data, index) => {
                     return <HistoryLi key={index}>{data}</HistoryLi>
