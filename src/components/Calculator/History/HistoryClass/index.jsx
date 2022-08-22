@@ -1,6 +1,6 @@
 import React from 'react'
 import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
-
+import PropTypes from 'prop-types'
 
 const History = ({ history }) => {
     return (
@@ -13,6 +13,10 @@ const History = ({ history }) => {
             </HistoryUl>
         </HistoryWrapper>
     )
+}
+
+History.propTypes = {
+    history: PropTypes.array.isRequired,
 }
 
 export default History

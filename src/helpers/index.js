@@ -1,26 +1,22 @@
-// @todo: add some helpers
-
 export function result(expr) {
-    const nestedBraces = expr.match(/\((.*)\)/)
+    const brackets = expr.match(/\((.*)\)/)
 
-    if (nestedBraces) {
-        const bracesResult = result(nestedBraces[1])
-        return poh(expr.replace(nestedBraces[0], bracesResult))
+    if (brackets) {
+        const bracesResult = result(brackets[1])
+        return search(expr.replace(brackets[0], bracesResult))
     } else {
-        return poh(expr)
+        return search(expr)
     }
 }
 
-function poh(expr) {
+function search(expr) {
     let action = expr.match(/(-?[0-9.]+)([*/%]{1})(-?[0-9.]+)/)
     if (!action) action = expr.match(/(-?[0-9.]+)([+-]{1})(-?[0-9.]+)/)
-
-    console.log(expr, action)
 
     action = [action[1], action[2], action[3]].join('')
 
     if (action !== expr) {
-        return poh(expr.replace(action, calculate(action)))
+        return search(expr.replace(action, calculate(action)))
     } else {
         return calculate(action)
     }

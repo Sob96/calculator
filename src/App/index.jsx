@@ -6,7 +6,7 @@ import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 import Loader from '@/components/Loader'
 import Header from '@/components/Header/HeaderFunc'
 
-const HomePage = lazy(() => import('@/pages/Home/HomeFunc'))
+const HomePage = lazy(() => import('@/pages/Home/HomeClass'))
 const Settings = lazy(() => import('@/pages/Settings'))
 
 export default () => (

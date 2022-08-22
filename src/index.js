@@ -12,12 +12,15 @@ import Application from '@/App'
 import { store } from '@/store'
 import theme from '@/theme'
 import GlobalStyles from '@/globalStyles'
+import ErrorBoundary from './App/ErrorBoundary'
 
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Application />
+        <ErrorBoundary>
+          <Application />
+        </ErrorBoundary>
         <GlobalStyles />
       </BrowserRouter>
     </ThemeProvider>
