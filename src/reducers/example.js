@@ -3,6 +3,7 @@
 const INITIAL_STATE = {
     number: '',
     history: [],
+    theme: 'lightTheme',
 }
 
 export const calculateReducer = (state = INITIAL_STATE, action) => {

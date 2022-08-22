@@ -23,7 +23,7 @@ Keypad.propTypes = {
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
     ]),
-    history: PropTypes.array.isRequired,
+    history: PropTypes.array,
 }
 
 export default Keypad

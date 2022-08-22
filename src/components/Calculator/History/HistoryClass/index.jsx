@@ -16,7 +16,7 @@ const History = ({ history }) => {
 }
 
 History.propTypes = {
-    history: PropTypes.array.isRequired,
+    history: PropTypes.array,
 }
 
 export default History

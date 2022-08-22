@@ -11,6 +11,7 @@ export const SettingsContainer = styled(Container)`
         font-size: 15px;
         font-weight: 600;
         margin-bottom: 5px;
+        color: ${props => props.theme.textColor}
     }
 
     select {
@@ -41,4 +42,6 @@ export const SettingsHeadline = styled.h2`
     margin: 30px 0 30px;
     font-size: 40px;
     font-weight: 500;
+    color: ${props => props.theme.textColor}
+
  `

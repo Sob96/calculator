@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 
 const Display = ({ number }) => {
-    console.log(typeof number)
     return (
         <DisplayWrapper>
             <div>{number || 0}</div>

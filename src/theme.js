@@ -55,3 +55,14 @@ export default {
     error,
   },
 }
+
+
+export const darkTheme = {
+  body: black,
+  textColor: white,
+}
+
+export const lightTheme = {
+  body: white,
+  textColor: black,
+}

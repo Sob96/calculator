@@ -13,6 +13,7 @@ export const DisplayWrapper = styled.section`
          font-size: 40px;
         font-weight: 500;
         padding-right: 8%;
+        color: ${props => props.theme.textColor};
    }
 `
 

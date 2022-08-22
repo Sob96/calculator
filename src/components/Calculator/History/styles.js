@@ -11,6 +11,7 @@ export const HistoryWrapper = styled.aside`
         font-weight: 500;
         font-size: 20px;
         margin-bottom: 10px;
+        color: ${props => props.theme.textColor}
    }
 
 `
@@ -25,4 +26,5 @@ export const HistoryLi = styled.li`
     display: inline-block;
     padding: 10px;
     font-size: 20px;
+    color: ${props => props.theme.textColor}
 `
