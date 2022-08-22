@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 
 const Keypad = ({ startCalculation, number, history }) => {
 
-
     return (
         <KeysWrapper>
             <KeysUl>

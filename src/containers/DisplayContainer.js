@@ -7,7 +7,6 @@ const mapStateToProps = state => {
     }
 }
 
-
 const DisplayContainer = connect(
     mapStateToProps,
 )(Display)

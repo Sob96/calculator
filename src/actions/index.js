@@ -7,7 +7,6 @@ export function addSymbol(payload) {
     }
 }
 
-
 export function setResult(payload) {
     return {
         type: SET_RESULT,

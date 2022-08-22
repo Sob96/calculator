@@ -1,8 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components'
-
-// import theme from './theme'
-
 export default createGlobalStyle`
+
   * {
     margin: 0;
     padding: 0;
@@ -29,13 +27,7 @@ export default createGlobalStyle`
     background-position: center;
     background-repeat: no-repeat;
   }
-
-  #root {
-    /* display: flex; */
-    /* background: linear-gradient(to bottom, #c06c84da, #6c5b7bda); */
-  }
 `
-
 export const Container = styled.div`
   width: 98%;
   max-width: 1440px;
