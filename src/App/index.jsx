@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router-dom'
 import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 
 import Loader from '@/components/Loader'
-import Header from '@/components/Header'
+import Header from '@/components/Header/HeaderFunc'
 
-const HomePage = lazy(() => import('@/pages/HomeFunc'))
+const HomePage = lazy(() => import('@/pages/Home/HomeFunc'))
 const Settings = lazy(() => import('@/pages/Settings'))
 
 export default () => (

@@ -1,7 +1,7 @@
 import symbols from '@/constants/symbols'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { KeysLi, KeysUl, KeysWrapper } from './styles'
+import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import { result } from '@/helpers'
 import { changeHistory, addSymbol, setResult } from '@/actions'
 

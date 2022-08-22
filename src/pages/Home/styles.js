@@ -6,7 +6,7 @@ export const DisplayKeypadWrapper = styled.main`
   margin-right: 1%;
 `
 
-export const HomeFunkContainer = styled(Container)`
+export const HomeContainer = styled(Container)`
     display: flex;
     justify-content: space-between;
 `
