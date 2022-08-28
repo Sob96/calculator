@@ -7,7 +7,7 @@ import { SettingsContainer, SettingsHeadline } from './styles'
 const Settings = ({ theme, setTheme }) => {
     const dispatch = useDispatch()
 
-    const clearHistory = () => dispatch(changeHistory([]))
+    // const clearHistory = () => dispatch(changeHistory([]))
 
     const changeTheme = e => setTheme(e.target.value)
 
@@ -21,7 +21,7 @@ const Settings = ({ theme, setTheme }) => {
                     <option>Light theme</option>
                     <option>Dark theme</option>
                 </select>
-                <button onClick={clearHistory}>Clear All History</button>
+                {/* <button onClick={clearHistory}>Clear All History</button> */}
 
             </SettingsContainer>
         </section>

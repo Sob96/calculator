@@ -1,75 +1,7 @@
-export const resultExpression = expr => {
-    const brackets = expr.match(/\((.*)\)/)
-
-    if (brackets) {
-        const bracesResult = resultExpression(brackets[1])
-        return search(expr.replace(brackets[0], bracesResult))
-    } else {
-        return search(expr)
-    }
-}
-
-const search = expr => {
-    let action = expr.match(/(-?[0-9.]+)([*/%]{1})(-?[0-9.]+)/)
-    if (!action) action = expr.match(/(-?[0-9.]+)([+-]{1})(-?[0-9.]+)/)
-
-    action = [action[1], action[2], action[3]].join('')
-
-    if (action !== expr) {
-        return search(expr.replace(action, calculateExpression(action)))
-    } else {
-        return calculateExpression(action)
-    }
-}
-
-const calculateExpression = expr => {
-    const action = expr.match(/(-?[0-9.]+)([*/%+-]{1})(-?[0-9.]+)/)
-    const firstNumber = Number(action[1])
-    // eslint-disable-next-line prefer-destructuring
-    const operator = action[2]
-    const secondNumber = Number(action[3])
-
-    switch (operator) {
-        case '+': return firstNumber + secondNumber
-        case '-': return firstNumber - secondNumber
-        case '*': return firstNumber * secondNumber
-        case '/': return firstNumber / secondNumber
-        case '%': return firstNumber % secondNumber
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Calculator {
-    // constructor() {
-    //     // this.value = 0
-    //     // this.history = []
-    // }
 
     executeCommand(command) {
         return command.execute()
-        // this.value = command.execute(this.value)
-        // this.history.push(command)
     }
 
     undo(command) {
@@ -234,8 +166,3 @@ export class IndexOfCommand {
 
 export const calculator = new Calculator()
 
-// calculator.executeCommand(new AddCommand(10))
-// calculator.executeCommand(new MultiplyCommand(2))
-// console.log(typeof calculator.value) // 20
-// calculator.undo(new MultiplyCommand(2))
-// console.log(calculator.value) // 10

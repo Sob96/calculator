@@ -3,11 +3,14 @@ import { useSelector } from 'react-redux'
 import { DisplayWrapper } from '../styles'
 
 
-const Display = ({ number, result, operator, display }) => {
-    // const number = useSelector(state => state.number.number)
+const Display = () => {
+    const number = useSelector(state => state.calculation.number)
+    const result = useSelector(state => state.calculation.result)
+    const display = useSelector(state => state.calculation.display)
+    const operator = useSelector(state => state.calculation.operator)
     return (
         <DisplayWrapper>
-            <div>display={display || 0} number={number || 0} result={result || 0} operator={operator}</div>
+            <div>display={display} number={number || 0} result={result || 0} operator={operator}</div>
 
         </DisplayWrapper>
     )

@@ -1,8 +1,8 @@
-import { CHANGE_HISTORY, ADD_SYMBOL, SET_RESULT } from "@/constants"
+import { CHANGE_HISTORY, SET_RESULT, SET_NUMBER, SET_DISPLAY, SET_OPERATOR, ADD_NUMBER, ADD_DISPLAY } from "@/constants"
 
-export function addSymbol(payload) {
+export function setNumber(payload) {
     return {
-        type: ADD_SYMBOL,
+        type: SET_NUMBER,
         payload,
     }
 }
@@ -13,6 +13,37 @@ export function setResult(payload) {
         payload,
     }
 }
+
+export function setDisplay(payload) {
+    return {
+        type: SET_DISPLAY,
+        payload,
+    }
+}
+
+export function setOperator(payload) {
+    return {
+        type: SET_OPERATOR,
+        payload,
+    }
+}
+
+
+export function addNumber(payload) {
+    return {
+        type: ADD_NUMBER,
+        payload,
+    }
+}
+
+export function addDisplay(payload) {
+    return {
+        type: ADD_DISPLAY,
+        payload,
+    }
+}
+
+
 
 export function changeHistory(payload) {
     return {

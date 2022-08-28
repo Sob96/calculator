@@ -3,204 +3,121 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import { AddCommand, AddDotCommand, AddMinusCommand, calculator, CleanLastSymbolCommand, DivideCommand, EuclideanDivisionCommand, IndexOfCommand, MultiplyCommand, RoundCommand, SolveCommand, SubtractCommand } from '@/helpers'
-import { changeHistory, addSymbol, setResult } from '@/actions'
+import { changeHistory, setResult, setNumber, setDisplay, setOperator } from '@/actions'
 
 
-const Keypad = ({ number, result, setNumber, setResult, operator, setOperator, display, setDisplay, history, setHistory }) => {
-    // const dispatch = useDispatch()
-    // const number = useSelector(state => state.number.number)
-    // const history = useSelector(state => state.history.history)
-
-    // const startCalculation = value => {
-    //     switch (value) {
-    //         case 'CE':
-    //             dispatch(setResult(String(number).slice(0, -1)))
-    //             break
-    //         case 'C':
-    //             dispatch(setResult(''))
-    //             break
-    //         case '=': {
-    //             const final = result(number)
-    //             const index = String(final).indexOf('.')
-    //             const rounded = index > 0 ? String(final).slice(0, index + 4) : final
-    //             dispatch(changeHistory(history.concat(`${number} = ${rounded}`)))
-    //             dispatch(setResult(rounded))
-    //             break
-    //         }
-    //         case '.':
-    //             dispatch(addSymbol('.'))
-    //             break
-    //         case '(':
-    //             dispatch(addSymbol('('))
-    //             break
-    //         case ')':
-    //             dispatch(addSymbol(')'))
-    //             break
-    //         case '+/-':
-    //             Number(number) >= 0 ? dispatch(addSymbol('-')) : dispatch(addSymbol('+'))
-    //             break
-    //         default:
-    //             dispatch(addSymbol(value))
-    //     }
-    // }
+const Keypad = () => {
+    const dispatch = useDispatch()
+    const number = useSelector(state => state.calculation.number)
+    const result = useSelector(state => state.calculation.result)
+    const display = useSelector(state => state.calculation.display)
+    const operator = useSelector(state => state.calculation.operator)
+    const history = useSelector(state => state.history.history)
 
 
-
-    // const getNumber = value => {
-
-
-    //         default:
-    //             // setResult(Number(result + value))
-    //             setNumber(number + value)
-    //         // setIsOperatorPressed(true)
-    //     }
-    // }
-
-    const calculate = value => {
-        // setNumber(result)
-        // setResult(number)
-        // if (!operator) {
-        //     setHistoryNote(historyNote + value)
-        // } else {
-
-        // }
+    const calculate = value => () => {
         if (!result && number) {
-            /* return {...state, number: '', result: state.number} */
-            setNumber('')
-            setResult(number)
+            dispatch(setNumber(''))
+            dispatch(setResult(number))
         }
         if (result && number) {
             let finalResult = Number(result)
             switch (operator) {
                 case '+':
-                    // finalResult = Number(result) + Number(number)
                     finalResult = calculator.executeCommand(new AddCommand(Number(result), Number(number)))
-                    // setResult(Number(result) + Number(number))
-                    // setDisplay(Number(result) + Number(number))
-                    // setNumber(value)
-                    // setOperator('')
                     break
                 case '-':
                     finalResult = calculator.executeCommand(new SubtractCommand(Number(result), Number(number)))
-                    // setResult(Number(result) - Number(number))
-                    // setDisplay(Number(result) - Number(number))
-                    // setNumber(value)
-                    // setOperator('')
                     break
                 case '/':
                     finalResult = calculator.executeCommand(new DivideCommand(Number(result), Number(number)))
-                    // setResult(Number(result) / Number(number))
-                    // setDisplay(Number(result) / Number(number))
-                    // setNumber(value)
-                    // setOperator('')
                     break
                 case '*':
                     finalResult = calculator.executeCommand(new MultiplyCommand(Number(result), Number(number)))
-                    // setResult(Number(result) * Number(number))
-                    // setDisplay(Number(result) * Number(number))
-                    // setNumber(value)
-                    // setOperator('')
                     break
                 case '%':
                     finalResult = calculator.executeCommand(new EuclideanDivisionCommand(Number(result), Number(number)))
-                    // setResult(Number(result) % Number(number))
-                    // setDisplay(Number(result) % Number(number))
-                    // setNumber(value)
-                    // setOperator('')
                     break
             }
-            // setHistoryNote(`${result}`)
             const index = calculator.executeCommand(new IndexOfCommand(finalResult))
             if (index > 0) finalResult = calculator.executeCommand(new RoundCommand(String(finalResult), index))
-            if (operator) setHistory(history.concat([`${result}${operator}${number} = ${finalResult}`]))
+            if (operator) dispatch(changeHistory(history.concat([`${result} ${operator} ${number} = ${finalResult}`])))
 
-            setNumber('')
-            setResult(finalResult)
+            dispatch(setNumber(''))
+            dispatch(setResult(finalResult))
 
-            setDisplay(finalResult)
-
-
-            // setHistoryNote('')
-
-            // setIsOperatorPressed(false)
+            dispatch(setDisplay(finalResult))
         }
-        setOperator(value)
+        dispatch(setOperator(value))
     }
 
-    const getNumber = value => {
+    const getNumber = value => () => {
         if (operator !== '') {
-            setNumber(number + value)
-            setDisplay(number + value)
+            dispatch(setNumber(number + value))
+            dispatch(setDisplay(number + value))
 
         } else {
-            setResult('')
-            setNumber(value)
-            setDisplay(value)
-            setOperator('+')
+            dispatch(setDisplay(''))
+            dispatch(setResult(''))
+            dispatch(setNumber(value))
+            dispatch(setDisplay(value))
+            dispatch(setOperator('+'))
         }
 
     }
 
 
 
-    const correctNumbers = value => {
+    const doOtherOperations = value => () => {
         switch (value) {
             case 'CE':
-                setDisplay(calculator.executeCommand(new CleanLastSymbolCommand(String(display))))
-                String(display) === String(number) ? setNumber(calculator.executeCommand(new CleanLastSymbolCommand(String(number)))) : setResult(calculator.executeCommand(new CleanLastSymbolCommand(String(result))))
+                dispatch(setDisplay(calculator.executeCommand(new CleanLastSymbolCommand(String(display)))))
+                String(display) === String(number) ? dispatch(setNumber(calculator.executeCommand(new CleanLastSymbolCommand(String(number)))))
+                    : dispatch(setResult(calculator.executeCommand(new CleanLastSymbolCommand(String(result)))))
                 break
             case 'C':
-                setResult(calculator.executeCommand(new SolveCommand('')))
-                setNumber(calculator.executeCommand(new SolveCommand('')))
-                setDisplay(calculator.executeCommand(new SolveCommand('')))
-                setOperator(calculator.executeCommand(new SolveCommand('')))
+                dispatch(setResult(calculator.executeCommand(new SolveCommand(''))))
+                dispatch(setNumber(calculator.executeCommand(new SolveCommand(''))))
+                dispatch(setDisplay(calculator.executeCommand(new SolveCommand(''))))
+                dispatch(setOperator(calculator.executeCommand(new SolveCommand(''))))
                 break
             case '=':
-                calculator.executeCommand(new SolveCommand(calculate('')))
-                // setOperator('+')
+                calculator.executeCommand(new SolveCommand(calculate('')()))
                 break
             case '.':
                 if (operator === '') {
                     if (calculator.executeCommand(new IndexOfCommand(result)) < 0) {
-                        setResult(calculator.executeCommand(new SolveCommand('')))
-                        setOperator(calculator.executeCommand(new SolveCommand('+')))
-                        setNumber(calculator.executeCommand(new AddDotCommand(number)))
-                        setDisplay(calculator.executeCommand(new AddDotCommand(number)))
+                        dispatch(setResult(calculator.executeCommand(new SolveCommand(''))))
+                        dispatch(setOperator(calculator.executeCommand(new SolveCommand('+'))))
+                        dispatch(setNumber(calculator.executeCommand(new AddDotCommand(number))))
+                        dispatch(setDisplay(calculator.executeCommand(new AddDotCommand(number))))
 
                     }
                 } else {
                     if (calculator.executeCommand(new IndexOfCommand(number)) < 0) {
-                        setNumber(calculator.executeCommand(new AddDotCommand(number)))
-                        setDisplay(calculator.executeCommand(new AddDotCommand(number)))
+                        dispatch(setNumber(calculator.executeCommand(new AddDotCommand(number))))
+                        dispatch(setDisplay(calculator.executeCommand(new AddDotCommand(number))))
                     }
 
                 }
                 break
-            // case '(':
-            //     setNumber('(' + number)
-            //     setResult('(' + result)
-            //     break
-            // case ')':
-            //     setNumber(number + ')')
-            //     setResult(result + ')')
-            //     break
             case '+/-':
                 if (operator === '') {
                     if (Number(result) >= 0) {
-                        setResult(calculator.executeCommand(new AddMinusCommand(result)))
-                        setDisplay(calculator.executeCommand(new AddMinusCommand(result)))
+                        dispatch(setResult(calculator.executeCommand(new AddMinusCommand(result))))
+                        dispatch(setDisplay(calculator.executeCommand(new AddMinusCommand(result))))
                     } else {
-                        setResult(calculator.undo(new AddMinusCommand(result)))
-                        setDisplay(calculator.undo(new AddMinusCommand(result)))
+                        dispatch(setResult(calculator.undo(new AddMinusCommand(result))))
+                        dispatch(setDisplay(calculator.undo(new AddMinusCommand(result))))
 
                     }
                 } else {
                     if (Number(number) >= 0) {
-                        setNumber(calculator.executeCommand(new AddMinusCommand(number)))
-                        setDisplay(calculator.executeCommand(new AddMinusCommand(number)))
+                        dispatch(setNumber(calculator.executeCommand(new AddMinusCommand(number))))
+                        dispatch(setDisplay(calculator.executeCommand(new AddMinusCommand(number))))
                     } else {
-                        setNumber(calculator.undo(new AddMinusCommand(number)))
-                        setDisplay(calculator.undo(new AddMinusCommand(number)))
+                        dispatch(setNumber(calculator.undo(new AddMinusCommand(number))))
+                        dispatch(setDisplay(calculator.undo(new AddMinusCommand(number))))
                     }
                 }
                 break
@@ -212,13 +129,13 @@ const Keypad = ({ number, result, setNumber, setResult, operator, setOperator, d
         <KeysWrapper>
             <KeysUl>
                 {digits.map((digit, index) => {
-                    return <KeysLi key={index} onClick={() => getNumber(digit)}>{digit}</KeysLi>
+                    return <KeysLi key={index} onClick={getNumber(digit)}>{digit}</KeysLi>
                 })}
                 {symbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => calculate(symbol)}>{symbol}</KeysLi>
+                    return <KeysLi key={index} onClick={calculate(symbol)}>{symbol}</KeysLi>
                 })}
                 {otherSymbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => correctNumbers(symbol)}>{symbol}</KeysLi>
+                    return <KeysLi key={index} onClick={doOtherOperations(symbol)}>{symbol}</KeysLi>
                 })}
             </KeysUl>
         </KeysWrapper>

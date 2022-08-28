@@ -1,16 +1,28 @@
 const INITIAL_STATE = {
     number: '',
+    result: '',
+    operator: '',
+    display: '',
     history: [],
     theme: 'lightTheme',
 }
 
 export const calculateReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'ADD_SYMBOL':
-            return { ...state, number: state.number + action.payload }
+        case 'SET_NUMBER':
+            return { ...state, number: action.payload }
 
         case 'SET_RESULT':
-            return { ...state, number: action.payload }
+            return { ...state, result: action.payload }
+        case 'SET_DISPLAY':
+            return { ...state, display: action.payload }
+        case 'SET_OPERATOR':
+            return { ...state, operator: action.payload }
+        case 'ADD_NUMBER':
+            return { ...state, number: state.number + action.payload }
+        case 'ADD_DISPLAY':
+            return { ...state, display: state.number + action.payload }
+
         default: return state
     }
 }
