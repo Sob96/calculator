@@ -7,13 +7,17 @@ describe('Home page', () => {
     cy.visit('/')
   })
 
-  it('it check loader', () => {
-    cy.get('svg').should('be.visible')
+  it('check the navigation', () => {
+    cy.get('ul').children().should('have.length', 22)
   })
 
-  it('it check welcome title', () => {
-    cy.get('#welcome')
-      .should('be.visible')
-      .contains('Welcome!')
-  })
+  // it('check the keypad', () => {
+  //   cy.get('ul').children().should('have.length', 22)
+  // })
+
+  // it('it check welcome title', () => {
+  //   cy.get('#welcome')
+  //     .should('be.visible')
+  //     .contains('Welcome!')
+  // })
 })
