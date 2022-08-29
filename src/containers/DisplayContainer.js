@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
     return {
-        number: state.number.number,
+        display: state.calculation.display,
     }
 }
 

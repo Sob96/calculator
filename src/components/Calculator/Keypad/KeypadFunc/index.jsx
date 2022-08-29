@@ -78,7 +78,7 @@ const Keypad = () => {
             case 'C':
                 dispatch(setResult(calculator.executeCommand(new SolveCommand(''))))
                 dispatch(setNumber(calculator.executeCommand(new SolveCommand(''))))
-                dispatch(setDisplay(calculator.executeCommand(new SolveCommand(''))))
+                dispatch(setDisplay(calculator.executeCommand(new SolveCommand(0))))
                 dispatch(setOperator(calculator.executeCommand(new SolveCommand(''))))
                 break
             case '=':
@@ -128,14 +128,14 @@ const Keypad = () => {
     return (
         <KeysWrapper>
             <KeysUl>
-                {digits.map((digit, index) => {
-                    return <KeysLi key={index} onClick={getNumber(digit)}>{digit}</KeysLi>
+                {digits.map((digit, id) => {
+                    return <KeysLi key={id} onClick={getNumber(digit)}>{digit}</KeysLi>
                 })}
-                {symbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={calculate(symbol)}>{symbol}</KeysLi>
+                {symbols.map((symbol, id) => {
+                    return <KeysLi key={id} onClick={calculate(symbol)}>{symbol}</KeysLi>
                 })}
-                {otherSymbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={doOtherOperations(symbol)}>{symbol}</KeysLi>
+                {otherSymbols.map((symbol, id) => {
+                    return <KeysLi key={id} onClick={doOtherOperations(symbol)}>{symbol}</KeysLi>
                 })}
             </KeysUl>
         </KeysWrapper>

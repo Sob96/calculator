@@ -1,15 +1,21 @@
-import symbols from '@/constants/symbols'
+import { symbols, digits, otherSymbols } from '@/constants/symbols'
 import React from 'react'
 import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import PropTypes from 'prop-types'
 
-const Keypad = ({ startCalculation, number, history }) => {
+const Keypad = ({ number, result, display, operator, calculate, getNumber, doOtherOperations }) => {
 
     return (
         <KeysWrapper>
             <KeysUl>
-                {symbols.map((symbol, index) => {
-                    return <KeysLi key={index} onClick={() => startCalculation(symbol)}>{symbol}</KeysLi>
+                {digits.map((digit, id) => {
+                    return <KeysLi key={id} onClick={getNumber(digit)}>{digit}</KeysLi>
+                })}
+                {symbols.map((symbol, id) => {
+                    return <KeysLi key={id} onClick={calculate(symbol)}>{symbol}</KeysLi>
+                })}
+                {otherSymbols.map((symbol, id) => {
+                    return <KeysLi key={id} onClick={doOtherOperations(symbol)}>{symbol}</KeysLi>
                 })}
             </KeysUl>
         </KeysWrapper>
@@ -17,12 +23,25 @@ const Keypad = ({ startCalculation, number, history }) => {
 }
 
 Keypad.propTypes = {
-    startCalculation: PropTypes.func.isRequired,
+    calculate: PropTypes.func.isRequired,
+    getNumber: PropTypes.func.isRequired,
+    doOtherOperations: PropTypes.func.isRequired,
     number: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
     ]),
-    history: PropTypes.array,
+    result: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired,
+    ]),
+    display: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired,
+    ]),
+    operator: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired,
+    ]),
 }
 
 export default Keypad

@@ -1,4 +1,4 @@
-import { CHANGE_HISTORY, SET_RESULT, SET_NUMBER, SET_DISPLAY, SET_OPERATOR, ADD_NUMBER, ADD_DISPLAY } from "@/constants"
+import { CHANGE_HISTORY, SET_RESULT, SET_NUMBER, SET_DISPLAY, SET_OPERATOR, ADD_NUMBER, ADD_DISPLAY, CHANGE_THEME, CHANGE_HIDDEN } from "@/constants"
 
 export function setNumber(payload) {
     return {
@@ -48,6 +48,20 @@ export function addDisplay(payload) {
 export function changeHistory(payload) {
     return {
         type: CHANGE_HISTORY,
+        payload,
+    }
+}
+
+export function changeTheme(payload) {
+    return {
+        type: CHANGE_THEME,
+        payload,
+    }
+}
+
+export function changeHidden(payload) {
+    return {
+        type: CHANGE_HIDDEN,
         payload,
     }
 }

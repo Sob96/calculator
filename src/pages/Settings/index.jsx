@@ -1,27 +1,35 @@
-import { changeHistory } from '@/actions'
+import { changeHistory, setDisplay, setNumber, setOperator, setResult, changeTheme } from '@/actions'
+import { calculator, SolveCommand } from '@/helpers'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { SettingsContainer, SettingsHeadline } from './styles'
 
 
-const Settings = ({ theme, setTheme }) => {
+const Settings = () => {
     const dispatch = useDispatch()
+    const theme = useSelector(state => state.theme.theme)
 
-    // const clearHistory = () => dispatch(changeHistory([]))
+    const clearAll = () => {
+        dispatch(changeHistory([]))
+        dispatch(setResult(calculator.executeCommand(new SolveCommand(''))))
+        dispatch(setNumber(calculator.executeCommand(new SolveCommand(''))))
+        dispatch(setDisplay(calculator.executeCommand(new SolveCommand(0))))
+        dispatch(setOperator(calculator.executeCommand(new SolveCommand(''))))
+    }
 
-    const changeTheme = e => setTheme(e.target.value)
+    const switchTheme = e => dispatch(changeTheme(e.target.value))
 
     return (
         <section>
             <SettingsContainer>
                 <SettingsHeadline>Settings</SettingsHeadline>
                 <label htmlFor="theme">Switch Theme</label>
-                <select onChange={changeTheme} value={theme}
+                <select onChange={switchTheme} value={theme}
                     id="theme">
                     <option>Light theme</option>
                     <option>Dark theme</option>
                 </select>
-                {/* <button onClick={clearHistory}>Clear All History</button> */}
+                <button onClick={clearAll}>Clear All</button>
 
             </SettingsContainer>
         </section>

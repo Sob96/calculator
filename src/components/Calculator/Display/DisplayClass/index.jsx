@@ -3,17 +3,17 @@ import { DisplayWrapper } from '../styles'
 import PropTypes from 'prop-types'
 
 
-const Display = ({ number }) => {
+const Display = ({ display }) => {
     return (
         <DisplayWrapper>
-            <div>{number || 0}</div>
+            <div>{display}</div>
 
         </DisplayWrapper>
     )
 }
 
 Display.propTypes = {
-    number: PropTypes.oneOfType([
+    display: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
     ]),
