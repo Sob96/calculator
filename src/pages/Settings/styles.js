@@ -1,5 +1,5 @@
-import { Container } from '@/globalStyles'
 import styled from 'styled-components'
+import { Container } from '@/globalStyles'
 
 export const SettingsContainer = styled(Container)`
     width: 90%;

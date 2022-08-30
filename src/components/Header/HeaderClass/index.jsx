@@ -1,7 +1,7 @@
-import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { HeaderContainer, HeaderWrapper } from '../styles'
+import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 
 class Header extends React.Component {
     render() {

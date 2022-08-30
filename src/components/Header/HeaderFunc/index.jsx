@@ -1,7 +1,7 @@
-import { HOME_PAGE_CLASS_ROUTE, HOME_PAGE_FUNC_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HeaderContainer, HeaderWrapper } from '../styles'
+import { HOME_PAGE_CLASS_ROUTE, HOME_PAGE_FUNC_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 
 const Header = () => {
     const location = useLocation()

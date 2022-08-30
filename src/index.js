@@ -9,12 +9,12 @@ import { Provider } from 'react-redux'
 
 import { PersistGate } from 'redux-persist/integration/react'
 
+import ErrorBoundary from './App/ErrorBoundary'
+import Loader from './components/Loader'
 import Application from '@/App'
 
 import { store, persistor } from '@/store'
 
-import ErrorBoundary from './App/ErrorBoundary'
-import Loader from './components/Loader'
 
 ReactDOM.render(
   <Provider store={store}>

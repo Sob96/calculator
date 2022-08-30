@@ -1,7 +1,7 @@
+import { connect } from 'react-redux'
 import { changeHistory, setDisplay, setNumber, setOperator, setResult } from '@/actions'
 import Keypad from '@/components/Calculator/Keypad/KeypadClass'
 import { AddCommand, AddDotCommand, AddMinusCommand, calculator, CleanLastSymbolCommand, DivideCommand, EuclideanDivisionCommand, IndexOfCommand, MultiplyCommand, result, RoundCommand, SolveCommand, SubtractCommand } from '@/helpers'
-import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
     return {

@@ -1,8 +1,8 @@
-import { changeHistory, setDisplay, setNumber, setOperator, setResult, changeTheme } from '@/actions'
-import { calculator, SolveCommand } from '@/helpers'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SettingsContainer, SettingsHeadline } from './styles'
+import { calculator, SolveCommand } from '@/helpers'
+import { changeHistory, setDisplay, setNumber, setOperator, setResult, changeTheme } from '@/actions'
 
 
 const Settings = () => {

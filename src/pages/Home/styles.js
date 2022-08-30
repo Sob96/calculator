@@ -1,5 +1,5 @@
-import { Container } from '@/globalStyles'
 import styled from 'styled-components'
+import { Container } from '@/globalStyles'
 
 export const DisplayKeypadWrapper = styled.main`
   width: 80%;
