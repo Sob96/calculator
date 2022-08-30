@@ -38,6 +38,9 @@ const Keypad = () => {
                 case '%':
                     finalResult = calculator.executeCommand(new EuclideanDivisionCommand(Number(result), Number(number)))
                     break
+                case '=':
+                    calculator.executeCommand(new SolveCommand(calculate('')()))
+                    break
             }
             const index = calculator.executeCommand(new IndexOfCommand(finalResult))
             if (index > 0) finalResult = calculator.executeCommand(new RoundCommand(String(finalResult), index))
@@ -80,9 +83,6 @@ const Keypad = () => {
                 dispatch(setNumber(calculator.executeCommand(new SolveCommand(''))))
                 dispatch(setDisplay(calculator.executeCommand(new SolveCommand(0))))
                 dispatch(setOperator(calculator.executeCommand(new SolveCommand(''))))
-                break
-            case '=':
-                calculator.executeCommand(new SolveCommand(calculate('')()))
                 break
             case '.':
                 if (operator === '') {
