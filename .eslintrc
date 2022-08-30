@@ -18,6 +18,7 @@
     "cypress/globals": true
   },
   "rules": {
+    "import/order": "error",
     "arrow-parens": [
       "error",
       "as-needed"

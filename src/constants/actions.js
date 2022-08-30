@@ -8,3 +8,8 @@ export const ADD_DISPLAY = 'ADD_DISPLAY'
 export const CHANGE_HISTORY = 'CHANGE_HISTORY'
 export const CHANGE_THEME = 'CHANGE_THEME'
 export const CHANGE_HIDDEN = 'CHANGE_HIDDEN'
+
+
+export const CALC = 'CALC'
+export const GET_NUM = 'GET_NUM'
+export const DO_OTHER_OPER = 'DO_OTHER_OPER'

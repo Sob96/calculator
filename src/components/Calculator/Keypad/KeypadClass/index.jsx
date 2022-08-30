@@ -1,13 +1,13 @@
-import { symbols, digits, otherSymbols } from '@/constants/symbols'
 import React from 'react'
-import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import PropTypes from 'prop-types'
+import { KeysLi, KeysUl, KeysWrapper } from '../styles'
+import { symbols, digits, otherSymbols } from '@/constants/symbols'
 
 const Keypad = ({ number, result, display, operator, calculate, getNumber, doOtherOperations }) => {
 
     return (
         <KeysWrapper>
-            <KeysUl>
+            {/* <KeysUl>
                 {digits.map((digit, id) => {
                     return <KeysLi key={id} onClick={getNumber(digit)}>{digit}</KeysLi>
                 })}
@@ -17,7 +17,7 @@ const Keypad = ({ number, result, display, operator, calculate, getNumber, doOth
                 {otherSymbols.map((symbol, id) => {
                     return <KeysLi key={id} onClick={doOtherOperations(symbol)}>{symbol}</KeysLi>
                 })}
-            </KeysUl>
+            </KeysUl> */}
         </KeysWrapper>
     )
 }

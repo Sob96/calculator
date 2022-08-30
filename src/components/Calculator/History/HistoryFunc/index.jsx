@@ -1,13 +1,16 @@
-import { changeHidden, changeHistory } from '@/actions'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
+import { changeHidden, changeHistory } from '@/actions'
 
 
 const History = () => {
     const dispatch = useDispatch()
-    const history = useSelector(state => state.history.history)
-    const hidden = useSelector(state => state.history.hidden)
+    // const history = useSelector(state => state.history.history)
+    // const hidden = useSelector(state => state.history.hidden)
+    const history = useSelector(state => state.calculation.history)
+    const hidden = useSelector(state => state.calculation.hidden)
+
 
     const clearHistory = () => dispatch(changeHistory([]))
 

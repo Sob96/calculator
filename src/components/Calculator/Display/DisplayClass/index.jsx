@@ -1,12 +1,12 @@
 import React from 'react'
-import { DisplayWrapper } from '../styles'
 import PropTypes from 'prop-types'
+import { DisplayWrapper } from '../styles'
 
 
 const Display = ({ number, result, display, operator }) => {
     return (
         <DisplayWrapper>
-            <div>display={display} number={number} result={result} operator={operator}</div>
+            {/* <div>display={display} number={number} result={result} operator={operator}</div> */}
 
         </DisplayWrapper>
     )

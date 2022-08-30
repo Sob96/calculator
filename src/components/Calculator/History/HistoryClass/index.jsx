@@ -1,12 +1,11 @@
 import React from 'react'
-import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
 import PropTypes from 'prop-types'
+import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
 
 const History = ({ history, hidden, clearHistory, show }) => {
-    console.log(history, hidden)
     return (
         <HistoryWrapper>
-            {history.length > 0 ? <button onClick={clearHistory}>Clear All History</button> : null}
+            {/* {history.length > 0 ? <button onClick={clearHistory}>Clear All History</button> : null}
             <h5>History</h5>
             <HistoryUl>
                 {history.map((data, id) => {
@@ -14,7 +13,7 @@ const History = ({ history, hidden, clearHistory, show }) => {
                 })}
 
             </HistoryUl>
-            {history.length > 4 ? <button onClick={show}>{!hidden ? 'Show all' : 'Hide all'}</button> : null}
+            {history.length > 4 ? <button onClick={show}>{!hidden ? 'Show all' : 'Hide all'}</button> : null} */}
         </HistoryWrapper>
     )
 }
