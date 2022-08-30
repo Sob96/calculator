@@ -1,4 +1,4 @@
-import { CHANGE_HISTORY, SET_RESULT, SET_NUMBER, SET_DISPLAY, SET_OPERATOR, ADD_NUMBER, ADD_DISPLAY, CHANGE_THEME, CHANGE_HIDDEN, CALC, GET_NUM, DO_OTHER_OPER } from "@/constants"
+import { CHANGE_HISTORY, SET_RESULT, SET_NUMBER, SET_DISPLAY, SET_OPERATOR, ADD_NUMBER, ADD_DISPLAY, CHANGE_THEME, CHANGE_HIDDEN, CALC, GET_NUM, DO_OTHER_OPER, CLEAN_ALL } from "@/constants"
 
 export function setNumber(payload) {
     return {
@@ -84,6 +84,13 @@ export function getNum(payload) {
 export function doOtherOper(payload) {
     return {
         type: DO_OTHER_OPER,
+        payload,
+    }
+}
+
+export function cleanAll(payload) {
+    return {
+        type: CLEAN_ALL,
         payload,
     }
 }

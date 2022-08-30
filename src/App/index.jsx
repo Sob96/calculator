@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { StyleSheetManager, ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { useSelector } from 'react-redux'
 import { HOME_PAGE_FUNC_ROUTE, HOME_PAGE_CLASS_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 

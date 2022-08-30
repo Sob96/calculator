@@ -1,33 +1,21 @@
 import { AddCommand, AddDotCommand, AddMinusCommand, calculator, CleanLastSymbolCommand, DivideCommand, EuclideanDivisionCommand, IndexOfCommand, MultiplyCommand, RoundCommand, SolveCommand, SubtractCommand } from "@/helpers"
 
-const INITIAL_STATE = {
+const INITIAL_STATE_CALC = {
     number: '',
     result: '',
     operator: '',
     display: 0,
     history: [],
-    theme: 'Light theme',
     hidden: false,
 }
 
-export const calculateReducer = (state = INITIAL_STATE, action) => {
-    // switch (action.type) {
-    //     case 'SET_NUMBER':
-    //         return { ...state, number: action.payload }
+const INITIAL_STATE_THEME = {
+    theme: 'Light theme',
+}
 
-    //     case 'SET_RESULT':
-    //         return { ...state, result: action.payload }
-    //     case 'SET_DISPLAY':
-    //         return { ...state, display: action.payload }
-    //     case 'SET_OPERATOR':
-    //         return { ...state, operator: action.payload }
-    //     case 'ADD_NUMBER':
-    //         return { ...state, number: state.number + action.payload }
-    //     case 'ADD_DISPLAY':
-    //         return { ...state, display: state.number + action.payload }
 
-    //     default: return state
-    // }
+
+export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
 
     switch (action.type) {
         case 'CALC':
@@ -56,7 +44,8 @@ export const calculateReducer = (state = INITIAL_STATE, action) => {
                 }
                 const index = calculator.executeCommand(new IndexOfCommand(finalResult))
                 if (index > 0) finalResult = calculator.executeCommand(new RoundCommand(String(finalResult), index))
-                const updatedHistory = state.operator ? state.history.concat([`${state.result} ${state.operator} ${state.number} = ${finalResult}`]) : state.history
+                const updatedHistory = state.operator ? state.history.concat([`${state.result} ${state.operator} ${state.number} = ${finalResult}`])
+                    : state.history
                 return { ...state, number: '', history: updatedHistory, result: finalResult, display: finalResult, operator: action.payload }
             }
             return { ...state, operator: action.payload }
@@ -66,16 +55,21 @@ export const calculateReducer = (state = INITIAL_STATE, action) => {
 
             } else {
                 return { ...state, result: '', number: action.payload, display: action.payload, operator: '+' }
-                // dispatch(setDisplay(''))
 
             }
         case 'DO_OTHER_OPER':
             switch (action.payload) {
                 case 'CE':
                     if (String(state.display) === String(state.number)) {
-                        return { ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))), number: calculator.executeCommand(new CleanLastSymbolCommand(String(state.number))) }
+                        return {
+                            ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))),
+                            number: calculator.executeCommand(new CleanLastSymbolCommand(String(state.number))),
+                        }
                     } else {
-                        return { ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))), result: calculator.executeCommand(new CleanLastSymbolCommand(String(state.result))) }
+                        return {
+                            ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))),
+                            result: calculator.executeCommand(new CleanLastSymbolCommand(String(state.result))),
+                        }
                     }
 
                 case 'C':
@@ -123,9 +117,15 @@ export const calculateReducer = (state = INITIAL_STATE, action) => {
                         }
                     } else {
                         if (Number(state.number) >= 0) {
-                            return { ...state, number: calculator.executeCommand(new AddMinusCommand(state.number)), display: calculator.executeCommand(new AddMinusCommand(state.number)) }
+                            return {
+                                ...state, number: calculator.executeCommand(new AddMinusCommand(state.number)),
+                                display: calculator.executeCommand(new AddMinusCommand(state.number)),
+                            }
                         } else {
-                            return { ...state, number: calculator.undo(new AddMinusCommand(state.number)), display: calculator.undo(new AddMinusCommand(state.number)) }
+                            return {
+                                ...state, number: calculator.undo(new AddMinusCommand(state.number)),
+                                display: calculator.undo(new AddMinusCommand(state.number)),
+                            }
 
                         }
                     }
@@ -136,21 +136,19 @@ export const calculateReducer = (state = INITIAL_STATE, action) => {
             return { ...state, history: action.payload }
         case 'CHANGE_HIDDEN':
             return { ...state, hidden: action.payload }
+        case 'CLEAN_ALL':
+            return {
+                ...state, history: [], number: calculator.executeCommand(new SolveCommand('')),
+                result: calculator.executeCommand(new SolveCommand('')),
+                display: calculator.executeCommand(new SolveCommand(0)),
+                operator: calculator.executeCommand(new SolveCommand('')),
+            }
         default: return state
     }
 }
 
-// export const historyReducer = (state = INITIAL_STATE, action) => {
-//     switch (action.type) {
-//         case 'CHANGE_HISTORY':
-//             return { ...state, history: action.payload }
-//         case 'CHANGE_HIDDEN':
-//             return { ...state, hidden: action.payload }
-//         default: return state
-//     }
-// }
 
-export const themeReducer = (state = INITIAL_STATE, action) => {
+export const themeReducer = (state = INITIAL_STATE_THEME, action) => {
     switch (action.type) {
         case 'CHANGE_THEME':
             return { ...state, theme: action.payload }

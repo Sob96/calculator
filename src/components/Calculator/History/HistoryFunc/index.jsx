@@ -6,8 +6,6 @@ import { changeHidden, changeHistory } from '@/actions'
 
 const History = () => {
     const dispatch = useDispatch()
-    // const history = useSelector(state => state.history.history)
-    // const hidden = useSelector(state => state.history.hidden)
     const history = useSelector(state => state.calculation.history)
     const hidden = useSelector(state => state.calculation.hidden)
 

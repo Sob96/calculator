@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { DisplayWrapper } from '../styles'
 
 
-const Display = ({ number, result, display, operator }) => {
+const Display = ({ display }) => {
     return (
         <DisplayWrapper>
-            {/* <div>display={display} number={number} result={result} operator={operator}</div> */}
+            <div>{display}</div>
 
         </DisplayWrapper>
     )

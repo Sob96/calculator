@@ -1,12 +1,11 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { changeHidden, changeHistory } from '@/actions'
 import History from '@/components/Calculator/History/HistoryClass'
 
 const mapStateToProps = state => {
     return {
-        history: state.history.history,
-        hidden: state.history.hidden,
+        history: state.calculation.history,
+        hidden: state.calculation.hidden,
     }
 }
 
