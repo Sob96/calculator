@@ -4,13 +4,13 @@ import { Route, Routes } from 'react-router-dom'
 import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 
 import Loader from '@/components/Loader'
-import Header from '@/components/Header/HeaderFunc'
+import Header from '@/components/Header/HeaderClass'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '@/theme'
 import GlobalStyles from '@/globalStyles'
 import { useSelector } from 'react-redux'
 
-const HomePage = lazy(() => import('@/pages/Home/HomeFunc'))
+const HomePage = lazy(() => import('@/pages/Home/HomeClass'))
 const Settings = lazy(() => import('@/pages/Settings'))
 
 const Application = () => {

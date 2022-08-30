@@ -9,14 +9,21 @@ const mapStateToProps = state => {
         result: state.calculation.result,
         display: state.calculation.display,
         operator: state.calculation.operator,
+        history: state.history.history,
     }
 }
 
+
 const mergeProps = (stateProps, dispatchProps) => {
-    const { number, result, display, operator } = stateProps
+    const { number, result, display, operator, history } = stateProps
     const { dispatch } = dispatchProps
 
     return {
+        number: number,
+        result: result,
+        display: display,
+        operator: operator,
+        history: history,
         calculate: value => () => {
             if (!result && number) {
                 dispatch(setNumber(''))

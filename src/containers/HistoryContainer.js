@@ -10,11 +10,14 @@ const mapStateToProps = state => {
     }
 }
 
+
 const mergeProps = (stateProps, dispatchProps) => {
-    const { hidden } = stateProps
+    const { history, hidden } = stateProps
     const { dispatch } = dispatchProps
 
     return {
+        history: history,
+        hidden: hidden,
         clearHistory: () => {
             dispatch(changeHistory([]))
         },
