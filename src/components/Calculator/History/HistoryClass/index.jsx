@@ -21,6 +21,8 @@ const History = ({ history, hidden, clearHistory, show }) => {
 History.propTypes = {
     history: PropTypes.array,
     hidden: PropTypes.bool,
+    clearHistory: PropTypes.func,
+    show: PropTypes.func,
 }
 
 export default History

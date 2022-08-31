@@ -12,11 +12,11 @@ const Display = ({ display }) => {
     )
 }
 
+export default Display
+
 Display.propTypes = {
     display: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
     ]),
 }
-
-export default Display

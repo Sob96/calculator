@@ -26,22 +26,6 @@ Keypad.propTypes = {
     calculate: PropTypes.func.isRequired,
     getNumber: PropTypes.func.isRequired,
     doOtherOperations: PropTypes.func.isRequired,
-    // number: PropTypes.oneOfType([
-    //     PropTypes.string.isRequired,
-    //     PropTypes.number.isRequired,
-    // ]),
-    // result: PropTypes.oneOfType([
-    //     PropTypes.string.isRequired,
-    //     PropTypes.number.isRequired,
-    // ]),
-    // display: PropTypes.oneOfType([
-    //     PropTypes.string.isRequired,
-    //     PropTypes.number.isRequired,
-    // ]),
-    // operator: PropTypes.oneOfType([
-    //     PropTypes.string.isRequired,
-    //     PropTypes.number.isRequired,
-    // ]),
 }
 
 export default Keypad

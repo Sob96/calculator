@@ -44,17 +44,18 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
                 }
                 const index = calculator.executeCommand(new IndexOfCommand(finalResult))
                 if (index > 0) finalResult = calculator.executeCommand(new RoundCommand(String(finalResult), index))
-                const updatedHistory = state.operator ? state.history.concat([`${state.result} ${state.operator} ${state.number} = ${finalResult}`])
+                const updatedHistory = state.operator && state.operator !== '='
+                    ? state.history.concat([`${state.result} ${state.operator} ${state.number} = ${finalResult}`])
                     : state.history
                 return { ...state, number: '', history: updatedHistory, result: finalResult, display: finalResult, operator: action.payload }
             }
             return { ...state, operator: action.payload }
         case 'GET_NUM':
-            if (state.operator !== '') {
+            if (state.operator !== '' && state.operator !== '=') {
                 return { ...state, number: state.number + action.payload, display: state.number + action.payload }
 
             } else {
-                return { ...state, result: '', number: action.payload, display: action.payload, operator: '+' }
+                return { ...state, result: '', number: state.number + action.payload, display: state.number + action.payload, operator: '+' }
 
             }
         case 'DO_OTHER_OPER':
@@ -81,7 +82,7 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
                     }
 
                 case '.':
-                    if (state.operator === '') {
+                    if (state.operator === '' || state.operator === '=') {
                         if (calculator.executeCommand(new IndexOfCommand(state.result)) < 0) {
                             return {
                                 ...state, result: calculator.executeCommand(new SolveCommand('')),
@@ -102,7 +103,7 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
                     }
                     break
                 case '+/-':
-                    if (state.operator === '') {
+                    if (state.operator === '=') {
                         if (Number(state.result) >= 0) {
                             return {
                                 ...state, result: calculator.executeCommand(new AddMinusCommand(state.result)),

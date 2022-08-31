@@ -140,7 +140,7 @@ export class RoundCommand {
     }
 
     execute() {
-        return this.value.slice(0, this.index + 4)
+        return this.value.slice(0, this.index + 4).replace(/0*$/, "")
     }
 
     undo() {
