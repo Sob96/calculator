@@ -9,6 +9,8 @@ const error = '#c86464'
 const primary = '#c06c84'
 const secondary = '#6c5b7b'
 const secondaryLight = '#6a6b7b'
+const gray = '#434343'
+const grayLight = '#F2F2F2'
 
 const boxShadows = [
   'box-shadow: 0px 4px 24px -8px rgba(0,0,0,0.75)',
@@ -58,11 +60,31 @@ export default {
 
 
 export const darkTheme = {
-  body: black,
-  textColor: white,
+  colors: {
+    body: black,
+    textColor: white,
+    headerText: white,
+    headerAndLines: gray,
+    buttons: gray,
+  },
+  indents: {
+    mb: '10px',
+    p: '1.5% 0',
+  },
+
 }
 
 export const lightTheme = {
-  body: white,
-  textColor: black,
+  colors: {
+    body: white,
+    textColor: black,
+    headerText: white,
+    headerAndLines: gray,
+    buttons: grayLight,
+  },
+  indents: {
+    mb: '10px',
+    p: '1.5% 0',
+  },
+
 }

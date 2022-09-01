@@ -62,11 +62,19 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
             switch (action.payload) {
                 case 'CE':
                     if (String(state.display) === String(state.number)) {
+                        if (String(state.display).length <= 1) return {
+                            ...state, display: calculator.executeCommand(new SolveCommand(0)),
+                            number: calculator.executeCommand(new SolveCommand('')),
+                        }
                         return {
                             ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))),
                             number: calculator.executeCommand(new CleanLastSymbolCommand(String(state.number))),
                         }
                     } else {
+                        if (String(state.display).length <= 1) return {
+                            ...state, display: calculator.executeCommand(new SolveCommand(0)),
+                            result: calculator.executeCommand(new SolveCommand('')),
+                        }
                         return {
                             ...state, display: calculator.executeCommand(new CleanLastSymbolCommand(String(state.display))),
                             result: calculator.executeCommand(new CleanLastSymbolCommand(String(state.result))),

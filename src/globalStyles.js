@@ -12,7 +12,7 @@ export default createGlobalStyle`
   html, body {
     width: 100%;
     height: 100%;
-    background-color: ${props => props.theme.body};
+    background-color: ${props => props.theme.colors.body};
   }
 
   body {
@@ -26,6 +26,7 @@ export default createGlobalStyle`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: .3s ease;
   }
 `
 export const Container = styled.div`

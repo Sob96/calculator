@@ -19,11 +19,12 @@ export const KeysLi = styled.li`
     align-items: center;
     list-style-type: none;
     width: 90%;
-    padding: 25px 0px;
+    padding: 25px 0;
     font-size: 40px;
-    border: 1px solid #707070;
+    border: 1px solid ${props => props.theme.colors.headerAndLines};
     cursor: pointer;
-    background-color: #F2F2F2;
+    background-color: ${props => props.theme.colors.buttons};
+    color: ${props => props.theme.colors.textColor};
     border-radius: 20%;
 
 `

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
+import { generateId } from '@/helpers'
 
 const History = ({ history, hidden, clearHistory, show }) => {
     return (
@@ -8,12 +9,12 @@ const History = ({ history, hidden, clearHistory, show }) => {
             {history.length > 0 ? <button onClick={clearHistory}>Clear All History</button> : null}
             <h5>History</h5>
             <HistoryUl>
-                {history.map((data, id) => {
-                    return <HistoryLi className={+id > 4 && !hidden ? 'hidden' : ''} key={id}>{data}</HistoryLi>
+                {history.map((data, index) => {
+                    return <HistoryLi className={index > 4 && !hidden ? 'hidden' : ''} key={generateId(index)}>{data}</HistoryLi>
                 })}
 
             </HistoryUl>
-            {history.length > 4 ? <button onClick={show}>{!hidden ? 'Show all' : 'Hide all'}</button> : null}
+            {history.length > 5 ? <button onClick={show}>{!hidden ? 'Show all' : 'Hide all'}</button> : null}
         </HistoryWrapper>
     )
 }

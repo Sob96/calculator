@@ -10,12 +10,12 @@ export const SettingsContainer = styled(Container)`
     label {
         font-size: 15px;
         font-weight: 600;
-        margin-bottom: 5px;
-        color: ${props => props.theme.textColor}
+        margin-bottom: ${props => props.theme.indents.mb};
+        color: ${props => props.theme.colors.textColor}
     }
 
     select {
-        margin-bottom: 20px;
+        margin-bottom: ${props => props.theme.indents.mb};
     }
 
     button {
@@ -26,7 +26,7 @@ export const SettingsContainer = styled(Container)`
         display: inline-block;
         padding: 15px 0 15px 10px;
         width: 20%;
-        border: 1.5px solid #707070;
+        border: 1.5px solid ${props => props.theme.colors.headerAndLines};
         border-radius: 5px;
         font-size: 20px;
         font-weight: 500;
@@ -42,6 +42,6 @@ export const SettingsHeadline = styled.h2`
     margin: 30px 0 30px;
     font-size: 40px;
     font-weight: 500;
-    color: ${props => props.theme.textColor}
+    color: ${props => props.theme.colors.textColor}
 
  `

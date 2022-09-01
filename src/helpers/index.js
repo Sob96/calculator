@@ -166,3 +166,5 @@ export class IndexOfCommand {
 
 export const calculator = new Calculator()
 
+
+export const generateId = index => Math.floor(Math.random() * (1000 - index + 1)) + index

@@ -3,10 +3,10 @@ import { Container } from '@/globalStyles'
 
 export const HeaderWrapper = styled.header`
     font-weight: 100;
-    background-color: #434343;
-    padding: 1.5% 0;
-    color: #FFFFFF;
-    margin-bottom: 10px;
+    background-color: ${props => props.theme.colors.headerAndLines};
+    padding: ${props => props.theme.indents.p};
+    color: ${props => props.theme.colors.headerText};
+    margin-bottom: ${props => props.theme.indents.mb};
 
     h1 {
         font-weight: 100;
@@ -17,7 +17,7 @@ export const HeaderWrapper = styled.header`
     .headerLinks {
         font-size: 20px;
         margin: 0 8px;
-        color: #FFFFFF;
+        color: ${props => props.theme.colors.headerText};
     }
     .inactive {
             text-decoration: none;
