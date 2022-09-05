@@ -20,7 +20,7 @@ const History = () => {
             <h5>History</h5>
             <HistoryUl>
                 {history.map((data, index) => {
-                    return <HistoryLi className={index > 4 && !hidden ? 'hidden' : ''} key={generateId(index)}>{data}</HistoryLi>
+                    return <HistoryLi className={index > 4 && !hidden ? 'hidden' : ''} key={generateId()}>{data}</HistoryLi>
                 })}
 
             </HistoryUl>

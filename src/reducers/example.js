@@ -125,6 +125,12 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
 
                         }
                     } else {
+                        if (state.number === '') {
+                            return {
+                                ...state,
+                                number: calculator.executeCommand(new SolveCommand('')),
+                            }
+                        }
                         if (Number(state.number) >= 0) {
                             return {
                                 ...state, number: calculator.executeCommand(new AddMinusCommand(state.number)),

@@ -39,8 +39,8 @@ const Keypad = () => {
     return (
         <KeysWrapper>
             <KeysUl>
-                {symbols.map((symbol, index) => {
-                    return <KeysLi key={generateId(index)} onClick={symbol.func(symbol.value)}>{symbol.value}</KeysLi>
+                {symbols.map(symbol => {
+                    return <KeysLi key={generateId()} onClick={symbol.func(symbol.value)}>{symbol.value}</KeysLi>
                 })}
             </KeysUl>
         </KeysWrapper>
