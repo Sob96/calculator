@@ -19,11 +19,10 @@ export const calculateReducer = (state = INITIAL_STATE_CALC, action) => {
 
     switch (action.type) {
         case 'CALC':
-
-            if (!state.result && state.number) {
+            if (state.result === '' && state.number !== '') {
                 return { ...state, number: '', result: state.number, operator: action.payload }
             }
-            if (state.result && state.number) {
+            if (state.result !== '' && state.number !== '') {
                 let finalResult = Number(state.result)
                 switch (state.operator) {
                     case '+':

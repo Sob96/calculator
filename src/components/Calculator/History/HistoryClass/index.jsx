@@ -6,7 +6,7 @@ import { generateId } from '@/helpers'
 const History = ({ history, hidden, clearHistory, show }) => {
     return (
         <HistoryWrapper>
-            {history.length > 0 ? <button onClick={clearHistory}>Clear All History</button> : null}
+            {history.length > 0 ? <button onClick={clearHistory}>Clean All History</button> : null}
             <h5>History</h5>
             <HistoryUl>
                 {history.map((data, index) => {
