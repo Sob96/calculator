@@ -24,7 +24,7 @@ const Settings = () => {
                     <option>Light theme</option>
                     <option>Dark theme</option>
                 </select>
-                <button onClick={cleanAllFunc}>Clear All</button>
+                <button onClick={cleanAllFunc}>Clean All</button>
 
             </SettingsContainer>
         </section>
