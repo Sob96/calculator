@@ -18,7 +18,7 @@ describe('Home page', () => {
     cy.contains('-').click()
     cy.get('.hVPVAJ div').should('have.text', '98')
     cy.get('.fGmInJ').children().should('have.length', 1)
-    cy.get('.iHYqlk button').should('have.text', 'Clear All History')
+    cy.get('.iHYqlk button').should('have.text', 'Clean All History')
     cy.get('.jULdQL').first().should('have.text', '77 + 21 = 98')
 
 

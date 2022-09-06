@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
 import { changeHidden, changeHistory } from '@/actions'
 import { generateId } from '@/helpers'

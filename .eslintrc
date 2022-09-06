@@ -18,7 +18,21 @@
     "cypress/globals": true
   },
   "rules": {
-    "import/order": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "internal",
+          "external"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
     "arrow-parens": [
       "error",
       "as-needed"

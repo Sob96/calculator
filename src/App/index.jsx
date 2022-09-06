@@ -1,14 +1,13 @@
 import React, { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
-
-import { ThemeProvider } from 'styled-components'
 import { useSelector } from 'react-redux'
-import { HOME_PAGE_FUNC_ROUTE, HOME_PAGE_CLASS_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
+import { Route, Routes } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
-import Loader from '@/components/Loader'
 import Header from '@/components/Header/HeaderFunc'
-import { darkTheme, lightTheme } from '@/theme'
+import Loader from '@/components/Loader'
+import { HOME_PAGE_FUNC_ROUTE, HOME_PAGE_CLASS_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants'
 import GlobalStyles from '@/globalStyles'
+import { darkTheme, lightTheme } from '@/theme'
 
 const HomePageFunc = lazy(() => import('@/pages/Home/HomeFunc'))
 const HomePageClass = lazy(() => import('@/pages/Home/HomeClass'))

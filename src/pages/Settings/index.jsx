@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { SettingsContainer, SettingsHeadline } from './styles'
 import { changeTheme, cleanAll } from '@/actions'
 

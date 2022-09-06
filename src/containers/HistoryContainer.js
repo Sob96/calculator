@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+
 import { changeHidden, changeHistory } from '@/actions'
 import History from '@/components/Calculator/History/HistoryClass'
 
