@@ -5,8 +5,15 @@
    * */
 
 /*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
+  @TODO add validation / handling for:
+  - persisting a reducer which has nested _persist
+  - handling actions that fire before reydrate is called
+*/
+
+/*
+  autoMergeLevel1: 
+    - merges 1 level of substate
+    - skips substate if already modified
 */
 
 /*
@@ -193,21 +200,7 @@ object-assign
 
 /* 68 */
 
-/* 69 */
-
 /* 7 */
-
-/* 70 */
-
-/* 71 */
-
-/* 72 */
-
-/* 73 */
-
-/* 74 */
-
-/* 75 */
 
 /* 8 */
 
@@ -297,17 +290,29 @@ object-assign
 
 /* combines hashStr (murmurhash) and nameGenerator for convenience */
 
-/* concated harmony reexport ADD_SYMBOL */
+/* concated harmony reexport CALC */
+
+/* concated harmony reexport CHANGE_HIDDEN */
 
 /* concated harmony reexport CHANGE_HISTORY */
 
-/* concated harmony reexport HOME_PAGE_ROUTE */
+/* concated harmony reexport CHANGE_THEME */
+
+/* concated harmony reexport CLEAN_ALL */
+
+/* concated harmony reexport DO_OTHER_OPER */
+
+/* concated harmony reexport GET_NUM */
+
+/* concated harmony reexport HOME_PAGE_CLASS_ROUTE */
+
+/* concated harmony reexport HOME_PAGE_FUNC_ROUTE */
 
 /* concated harmony reexport Provider */
 
 /* concated harmony reexport SETTINGS_PAGE_ROUTE */
 
-/* concated harmony reexport SET_RESULT */
+/* concated harmony reexport connect */
 
 /* concated harmony reexport useDispatch */
 
@@ -375,10 +380,6 @@ object-assign
 
 /* isRoot */
 
-/* istanbul ignore if  */
-
-/* istanbul ignore next  */
-
 /* mainly for createGlobalStyle to check for its id */
 
 /* n */
@@ -419,13 +420,9 @@ object-assign
 
 /* this is used for not reinjecting rules via hasNameForId() */
 
-/* unused concated harmony import ACTION_PREFIX */
-
 /* unused concated harmony import ReactReduxContext */
 
 /* unused concated harmony import batch */
-
-/* unused concated harmony import connect */
 
 /* unused concated harmony import connectAdvanced */
 
@@ -1344,6 +1341,8 @@ object-assign
 
 // $FlowFixMe: Not typed to avoid destructuring arguments
 
+// $FlowIgnore need to update State type
+
 // - However, we may have gotten new wrapper props after that
 
 // - This render may have been triggered by a Redux store update that produced new child props
@@ -1358,13 +1357,21 @@ object-assign
 
 // @@iterator function is called on it. Some browsers' implementations of the
 
+// @NOTE PERSIST can be called multiple times, noop after the first
+
+// @NOTE PERSIST resumes if paused.
+
+// @NOTE in the future this may be exposed via config
+
+// @NOTE only ever create persistoid once, ensure we call it at least once, even if _persist has already been set
+
+// @TODO add fail handlers (typically storage full)
+
+// @TODO remove once flow < 0.63 support is no longer required.
+
 // @font-face, @page
 
 // @import
-
-// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-
-// @see https://github.com/webpack-contrib/style-loader/issues/177
 
 // @ts-ignore
 
@@ -1379,8 +1386,6 @@ object-assign
 // Actually run the selector with the most recent store state and wrapper props
 
 // Actually subscribe to the nearest connected ancestor (or store)
-
-// Adapted from convert-source-map (MIT)
 
 // Add the children before adding this route to the array so we traverse the
 
@@ -1462,6 +1467,24 @@ object-assign
 
 // CONCATENATED MODULE: ./node_modules/react-router/index.js
 
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/createPersistoid.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/getStoredState.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/index.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/integration/react.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/persistReducer.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/persistStore.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/purgeStoredState.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/stateReconciler/autoMergeLevel1.js
+
+// CONCATENATED MODULE: ./node_modules/redux-persist/es/stateReconciler/autoMergeLevel2.js
+
 // CONCATENATED MODULE: ./node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js
 
 // CONCATENATED MODULE: ./node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
@@ -1528,15 +1551,11 @@ object-assign
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
-
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
 
-// EXTERNAL MODULE: ./node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css
-
-// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 21 modules
-
 // EXTERNAL MODULE: ./node_modules/react/index.js
+
+// EXTERNAL MODULE: ./node_modules/redux-persist/lib/storage/index.js
 
 // EXTERNAL MODULE: ./node_modules/redux/es/redux.js
 
@@ -1554,11 +1573,7 @@ object-assign
 
 // Flag the module as loaded
 
-// For old IE
-
 // For the native GeneratorFunction constructor, the best we can
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 
 // GenStateExecuting and loop back for another invocation.
 
@@ -1567,8 +1582,6 @@ object-assign
 // Helper for defining the .next, .throw, and .return methods of the
 
 // Helper to call a given function, only once
-
-// I hope this will never occur (Hey this way we have smaller bundles)
 
 // IE 8 has a broken Object.defineProperty that only works on DOM objects.
 
@@ -1622,8 +1635,6 @@ object-assign
 
 // Important!
 
-// Imports
-
 // In that case, throw the error from here so it doesn't get lost.
 
 // It's possible that we caught an error due to a bad mapState function, but the
@@ -1639,8 +1650,6 @@ object-assign
 // Load entry module and return exports
 
 // Memoize the check that determines which context instance we should use.
-
-// Module
 
 // NOTE: We cannot mutate the deferred array itself as all clones
 
@@ -1722,8 +1731,6 @@ object-assign
 
 // Source: https://github.com/garycourt/murmurhash-js/blob/master/murmurhash2_gc.js
 
-// Special case to return head of iframe instead of iframe itself
-
 // TODO We're reading the store directly in render() here. Bad idea?
 
 // TODO: Add more comments
@@ -1735,10 +1742,6 @@ object-assign
 // TODO: refactor+expose that code to be reusable here?
 
 // Taken from https://github.com/facebook/react/blob/b87aabdfe1b7461e7331abb3601d9e6bb27544bc/packages/react-dom/src/shared/dangerousStyleValue.js
-
-// Test for IE <= 9 as proposed by Browserhacks
-
-// Tests for existence of standard globals is to allow style-loader
 
 // Thanks to ReactDOMFactories for this handy list!
 
@@ -1779,8 +1782,6 @@ object-assign
 // This shouldn't happen as long as we do top-down subscriptions correctly, but
 
 // This will likely cause Bad Things (TM) to happen in Concurrent Mode.
-
-// This will throw an exception if access to iframe is blocked
 
 // This works if eval is allowed (see CSP)
 
@@ -1826,6 +1827,8 @@ object-assign
 
 // We should still report in case we break this code.
 
+// We still need to call the base reducer because there might be nested
+
 // We want to capture the wrapper props and child props we used for later comparisons
 
 // When a store is created, an "INIT" action is dispatched so that every
@@ -1859,6 +1862,8 @@ object-assign
 // about useLayoutEffect in SSR, so we try to detect environment and fall back to
 
 // accidentally pass it on to the delegate.
+
+// add any changed keys to the queue
 
 // all SC-specific things should not be hoisted
 
@@ -1920,6 +1925,8 @@ object-assign
 
 // changed since we began.
 
+// cleanup any removed keys just before write.
+
 // conditionals in their route config.
 
 // connected descendants won't update until after this component is done
@@ -1936,11 +1943,11 @@ object-assign
 
 // createConnect with default args builds the 'official' connect behavior. Calling it with
 
-// css base code, injected by the css-loader
-
 // current iteration.
 
 // defaultProps, but React automatically puts defaultProps on props.
+
+// defaults
 
 // defensive measure
 
@@ -1968,8 +1975,6 @@ object-assign
 
 // don't natively support it.
 
-// due to cross-origin restrictions
-
 // easier to handle this case. if(!global) { ...}
 
 // effects in the iterator's finally block will still be executed
@@ -1978,9 +1983,9 @@ object-assign
 
 // enqueue has not been called before, then it is important to
 
-// eslint-disable-line no-new-wrappers
+// eslint-disable-line import/no-unresolved
 
-// eslint-disable-next-line func-names
+// eslint-disable-line no-new-wrappers
 
 // eslint-disable-next-line guard-for-in
 
@@ -1991,8 +1996,6 @@ object-assign
 // eslint-disable-next-line no-param-reassign
 
 // eslint-disable-next-line no-plusplus
-
-// eslint-disable-next-line prefer-destructuring
 
 // eslint-disable-next-line react/no-danger
 
@@ -2048,11 +2051,17 @@ object-assign
 
 // if clearTimeout wasn't available but was latter defined
 
+// if mapStateToProps is falsy, the Connect component doesn't subscribe to store state changes
+
+// if reducer modifies substate, skip auto rehydration
+
 // if setTimeout wasn't available but was latter defined
 
 // if we ever do those wrong, this throw will surface the error in our tests.
 
-// import a list of modules into the list
+// if we have not already handled PERSIST, straight passthrough
+
+// ignore _persist data
 
 // important to get this right, even though it requires care.
 
@@ -2061,6 +2070,8 @@ object-assign
 // in every case, so we don't have to touch the arguments object. The
 
 // index routes, so don't add them to the list of possible branches.
+
+// initialize stateful values
 
 // injected easily by `bin/regenerator --include-runtime script.js`.
 
@@ -2078,13 +2089,15 @@ object-assign
 
 // is created synchronously, otherwise a store update may occur before the
 
+// is key already queued? noop
+
+// is keyspace ignored? noop
+
 // is re-rendered, the selectors are called again, and
 
+// is state modified ? return original : return updated
+
 // is why the Promise constructor synchronously invokes its
-
-// istanbul ignore if
-
-// istanbul ignore next
 
 // it, so set the completion value of the entire function to
 
@@ -2124,6 +2137,8 @@ object-assign
 
 // no consecutive self refs (.b.b); that is a precedence boost and treated differently
 
+// noop on restState if purging
+
 // object and shouldComponentUpdate will always return true.
 
 // object to not be returned from this call. This ensures that doesn't happen.
@@ -2138,17 +2153,25 @@ object-assign
 
 // only additional allocation required is the completion record, which
 
+// only rehydrate if inboundState exists and is an object
+
+// only rehydrate if we are not already sealed
+
 // options object:
 
 // or a finally block) gives us a place to store values thrown from
 
 // or not, return the runtime object so that we can declare the variable
 
+// otherwise hard set the new value
+
 // outer generator.
 
 // parent re-rendered without this component and we're about to unmount.
 
 // parent routes to matching only their own words and nothing more, e.g. parent
+
+// passed through to selectorFactory
 
 // place our cache into shared context so it'll persist between HMRs
 
@@ -2182,11 +2205,13 @@ object-assign
 
 // result, either by returning a { value, done } result from the
 
-// return the list of modules as css string
+// return `persistoid`
 
 // route "/home" should not match "/home2".
 
 // route tree depth-first and child routes appear before their parents in
+
+// run base reducer:
 
 // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
 
@@ -2204,8 +2229,6 @@ object-assign
 
 // shim for using process in browser
 
-// skip already imported module
-
 // so that results are always delivered in the correct order. If
 
 // so that the async generator function has the opportunity to do
@@ -2213,6 +2236,8 @@ object-assign
 // so they sort equally.
 
 // start chunk loading
+
+// start the time iterator if not running (read: throttle)
 
 // state defaults to `null` because `window.history.state` does
 
@@ -2227,8 +2252,6 @@ object-assign
 // subscription callback always has the selector from the latest render commit
 
 // subscription is created and an inconsistent state may be observed
-
-// tags it will allow on a page
 
 // that child, same as if it was wrapped in React.memo() or returned false from shouldComponentUpdate.
 
@@ -2276,8 +2299,6 @@ object-assign
 
 // this function wraps mapToProps in a proxy function which does several things:
 
-// this implementation is not 100% perfect for weird media query combinations
-
 // throw the exception.
 
 // to create a new function object. We can even get away with assuming
@@ -2285,8 +2306,6 @@ object-assign
 // to determine what the child props should be
 
 // to determine what the child props should be.
-
-// to operate correctly into non-standard environments
 
 // to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
 
@@ -2298,13 +2317,21 @@ object-assign
 
 // unified ._invoke helper method.
 
+// update the persistoid only if we are rehydrated and not paused
+
 // useLayoutEffect in the browser. We need useLayoutEffect because we want
 
 // useLayoutEffect in the browser. We need useLayoutEffect to ensure the store
 
+// used in error messages
+
+// used to compute Connect's displayName from the wrapped component's displayName.
+
 // used to get the classname of a nested styled component
 
 // user handled the error, we can clear bookkept values
+
+// uses of persistReducer which need to be aware of the PERSIST action
 
 // v8 likes predictible objects
 
@@ -2325,8 +2352,6 @@ object-assign
 // we've dumped the saga stack to string and are passing it to user's code
 
 // webpackBootstrap
-
-// when a module is imported multiple times with different media queries.
 
 // when when somebody has screwed with setTimeout but no I.E. maddness
 
@@ -2351,5 +2376,11 @@ object-assign
 ///////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
+
+//add it for processing too
+
+//if any key is missing in the new state which was present in the lastState,
+
+//if the endState is undefined, no need to persist the existing serialized content
 
 //normal enviroments in sane situations
