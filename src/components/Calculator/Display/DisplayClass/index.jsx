@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-
 import { DisplayWrapper } from '../styles'
-
 
 const Display = ({ display }) => {
     return (

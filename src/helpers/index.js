@@ -1,5 +1,4 @@
 class Calculator {
-
     executeCommand(command) {
         return command.execute()
     }

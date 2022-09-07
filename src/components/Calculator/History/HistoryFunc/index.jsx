@@ -5,7 +5,6 @@ import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
 import { changeHidden, changeHistory } from '@/actions'
 import { generateId } from '@/helpers'
 
-
 const History = () => {
     const dispatch = useDispatch()
     const history = useSelector(state => state.calculation.history)

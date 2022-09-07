@@ -26,5 +26,4 @@ export const KeysLi = styled.li`
     background-color: ${props => props.theme.colors.buttons};
     color: ${props => props.theme.colors.textColor};
     border-radius: 20%;
-
 `

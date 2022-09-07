@@ -5,7 +5,6 @@ import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import { calc, getNum, doOtherOper } from '@/actions'
 import { generateId } from '@/helpers'
 
-
 const Keypad = () => {
     const dispatch = useDispatch()
 

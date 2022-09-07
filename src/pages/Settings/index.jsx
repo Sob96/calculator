@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SettingsContainer, SettingsHeadline } from './styles'
 import { changeTheme, cleanAll } from '@/actions'
 
-
 const Settings = () => {
     const dispatch = useDispatch()
     const theme = useSelector(state => state.theme.theme)

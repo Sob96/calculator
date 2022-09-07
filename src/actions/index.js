@@ -1,6 +1,5 @@
 import { CHANGE_HISTORY, CHANGE_THEME, CHANGE_HIDDEN, CALC, GET_NUM, DO_OTHER_OPER, CLEAN_ALL } from "@/constants"
 
-
 export function changeHistory(payload) {
     return {
         type: CHANGE_HISTORY,

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-
 import { KeysLi, KeysUl, KeysWrapper } from '../styles'
 import { generateId } from '@/helpers'
 

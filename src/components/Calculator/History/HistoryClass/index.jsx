@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-
 import { HistoryLi, HistoryUl, HistoryWrapper } from '../styles'
 import { generateId } from '@/helpers'
 
