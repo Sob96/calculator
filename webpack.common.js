@@ -1,16 +1,17 @@
 const path = require('path')
+
 const {
   CleanWebpackPlugin,
 } = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: '/calculator/',
   },
   plugins: [
     new CleanWebpackPlugin(),
