@@ -18,7 +18,7 @@ const mergeProps = (stateProps, dispatchProps) => {
     return {
         history: history,
         hidden: hidden,
-        clearHistory: () => {
+        cleanHistory: () => {
             dispatch(changeHistory([]))
         },
         show: () => {
